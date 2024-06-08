@@ -15,8 +15,15 @@ public class Modulzaro_feladatok {
     }
 
     private static void programozoiTetelek() {
-        tomb = feltolt(db);
-        
+        feltolt(db);
+        osszegzes();
+        megszamlalas();
+        minHely();
+        maxHely();
+        kivalasztas();
+        eldontesEgy();
+        eldontesMind();
+        linKer();
         kiir(oszlop);
     }
 
@@ -40,5 +47,58 @@ public class Modulzaro_feladatok {
         
     }
 
+    private static int osszegzes() {
+        int sum = 0;
+        for (int elem : tomb) {
+            sum += elem;
+        }
+        return sum;
+    }
+
+    private static int megszamlalas() {
+        int szamlalo = 0;
+        for (int elem : tomb) {
+            if (elem == 0) {
+                szamlalo++;
+            }
+        }
+        return szamlalo;
+    }
+
+    private static int minHely() {
+        int min = tomb[0];
+        for (int elem : tomb) {
+            if (elem < min) {
+                min = elem;
+            }
+        }
+        return min; 
+    }
+
+    private static int maxHely() {
+        int max = tomb[0];
+        for (int elem : tomb) {
+            if (elem > max) {
+                max = elem;
+            }
+        }
+        return max;
+    }
+
+    private static void kivalasztas() {
+        
+    }
+
+    private static void eldontesEgy() {
+        
+    }
+
+    private static void eldontesMind() {
+        
+    }
+
+    private static void linKer() {
+        
+    }
     
 }
