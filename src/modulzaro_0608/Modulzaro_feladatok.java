@@ -4,6 +4,7 @@ package modulzaro_0608;
 public class Modulzaro_feladatok {
 
     static int[] tomb;
+    static int db = 5;
     static int also = 0;
     static int felso = 10;
     static int oszlop = 2;
@@ -14,16 +15,21 @@ public class Modulzaro_feladatok {
     }
 
     private static void programozoiTetelek() {
-        feltolt(velSzam(also, felso));
+        tomb = feltolt(db);
+        
         kiir(oszlop);
     }
 
-    private static void feltolt(int db) {
+    private static int[] feltolt(int db) {
         tomb = new int[db];
+        for (int elem : tomb) {
+            elem = velSzam(also, felso);
+        }
+        return tomb;
     }
 
-    private static int velSzam(int also, int felso) {
-        return 0;
+    private static int velSzam(int also, int felso) {        
+        return (int)(Math.random()*(felso - also) + also);
     }
 
     private static void kiir(int oszlop) {
@@ -33,5 +39,6 @@ public class Modulzaro_feladatok {
     private static void adatszerkezetTomb() {
         
     }
+
     
 }
