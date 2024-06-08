@@ -14,12 +14,12 @@ public class Modulzaro_feladatok {
     }
 
     private static void programozoiTetelek() {
-        feltolt();
+        feltolt(velSzam(also, felso));
         kiir(oszlop);
     }
 
-    private static void feltolt() {
-        tomb = new int[velSzam(also, felso)];
+    private static void feltolt(int db) {
+        tomb = new int[db];
     }
 
     private static int velSzam(int also, int felso) {
