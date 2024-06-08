@@ -85,20 +85,56 @@ public class Modulzaro_feladatok {
         return max;
     }
 
-    private static void kivalasztas() {
-        
+    private static int kivalasztas() {
+        int i = 0;
+        while (!(tomb[i] % 5 == 0)) {
+            i++;
+        }
+        return i+1;
     }
 
-    private static void eldontesEgy() {
-        
+    private static boolean eldontesEgy() {
+        int i = 0;
+        while (i < db && !tokeletesSzam(tomb[i])) {
+            i++;
+        }
+        return i < db;
     }
 
-    private static void eldontesMind() {
-        
+    private static boolean eldontesMind() {
+        int i = 1;
+        while (i < db && tomb[i] >= tomb[i-1]) {
+            i++;
+        }
+        return i >= db;
     }
 
-    private static void linKer() {
-        
+    private static int linKer() {
+        int i = 0;
+        while (i < db && tomb[i] == 13) {
+            i++;
+        }
+        if (i < db) {
+            return i + 1;
+        }else{
+            return -1;            
+        }
+    }
+
+    private static boolean tokeletesSzam(int szam) {
+        int sum = 0;
+        int i = 1;
+        while (i <= szam/2) {            
+            if (szam % i == 0) {
+                sum += i;
+            }
+            i++;
+        }
+        if (sum == szam) {
+            return true;
+        }else{
+            return false;            
+        }
     }
     
 }
