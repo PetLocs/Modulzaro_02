@@ -9,6 +9,10 @@ public class Modulzaro_feladatok {
     static int felso = 20;
     static int oszlop = 1;
     
+    static final int MERET = 4;
+    static int[][] matrix = new int[MERET][MERET];
+    static int[] foatloTomb = new int[MERET];
+    
     public static void main(String[] args) {
         programozoiTetelek();
         adatszerkezetTomb();
@@ -18,15 +22,7 @@ public class Modulzaro_feladatok {
         //tomb = feltolt(db);
         /* DEBUG */
         tomb = new int[] {0, 1, 2, 3, 4, 5};
-        /* DEBUG VÉGE */
-        osszegzes();
-        megszamlalas();
-        minHely();
-        maxHely();
-        kivalasztas();
-        eldontesEgy();
-        eldontesMind();
-        linKer();
+        /* DEBUG VÉGE */        
         kiir(oszlop);
     }
 
@@ -50,8 +46,8 @@ public class Modulzaro_feladatok {
         System.out.print("]\n");
         String osszeg = "Tömb összege: " + osszegzes();
         String megszam = "Nullák száma: " + megszamlalas();
-        String min = "Legkisebb érték: " + minHely();
-        String max = "Legnagyobb érték: " + maxHely();
+        String min = "Legkisebb érték: " + minHely(tomb);
+        String max = "Legnagyobb érték: " + maxHely(tomb);
         String kivalaszt = "Első 5-el osztható elem helye: ";
         kivalaszt += kivalasztas() == -1 ? "Nincs ilyen szám!" : kivalasztas() + ". helyen";
         String eldont1 = "Van-e tökéletes szám? ";
@@ -89,7 +85,7 @@ public class Modulzaro_feladatok {
         return szamlalo;
     }
 
-    private static int minHely() {
+    private static int minHely(int [] tomb) {
         int min = tomb[0];
         for (int elem : tomb) {
             if (elem < min) {
@@ -99,7 +95,7 @@ public class Modulzaro_feladatok {
         return min; 
     }
 
-    private static int maxHely() {
+    private static int maxHely(int [] tomb) {
         int max = tomb[0];
         for (int elem : tomb) {
             if (elem > max) {
@@ -110,7 +106,7 @@ public class Modulzaro_feladatok {
     }
 
     private static int kivalasztas() {
-        if (maxHely() >= 5) {
+        if (maxHely(tomb) >= 5) {
             int i = 0;
             while (!(tomb[i] % 5 == 0)) {
                 i++;
@@ -165,8 +161,58 @@ public class Modulzaro_feladatok {
         }
     }
     
-    private static void adatszerkezetTomb() {
-        
+    private static void adatszerkezetTomb() {        
+        kimenet(foatlo());
+        foatloFeltolt();
+        kimenet(invertalo());
     }
-    
+
+    private static int [][] foatlo() {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                if (i == j) {
+                    matrix[i][j] = velSzam(also, felso);
+                }
+            }
+        }
+        return matrix;
+    }
+
+    private static void kimenet(int[][] matrix) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                if (j%MERET == MERET - 1) {
+                    System.out.printf("%2d\n",matrix[i][j]);
+                }else{
+                    System.out.printf("%2d ",matrix[i][j]);                    
+                }
+            }
+        }
+        System.out.println("");
+    }
+
+    private static int[][] invertalo() {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                if (i != j) {
+                    matrix[i][j] = velSzam(minHely(foatloTomb), maxHely(foatloTomb));
+                }else{
+                    matrix[i][j] = 0;
+                }
+            }
+        }
+        return matrix;
+    }
+
+    private static void foatloFeltolt() {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                for (int k = 0; k < foatloTomb.length; k++) {
+                    if (matrix[i][j] > 0) {
+                        foatloTomb[k] = matrix[i][j];
+                    }
+                }
+            }
+        }
+    }
 }
