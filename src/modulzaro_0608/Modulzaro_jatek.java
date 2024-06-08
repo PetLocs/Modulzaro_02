@@ -36,9 +36,7 @@ public class Modulzaro_jatek {
         System.out.printf("\n");
     }
 
-    private static void bekeres() {        
-        System.out.print("Kérem válasszon csapatot!");            
-        csapat = SC.next();                
+    private static void bekeres() {          
         System.out.print("Kérem válasszon mezőt!");
         mezo = SC.nextInt() +2; 
         lepes();
