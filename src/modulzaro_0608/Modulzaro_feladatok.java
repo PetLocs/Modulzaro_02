@@ -6,6 +6,7 @@ public class Modulzaro_feladatok {
     static int[] tomb;
     static int also = 0;
     static int felso = 10;
+    static int oszlop = 2;
     
     public static void main(String[] args) {
         programozoiTetelek();
@@ -14,6 +15,7 @@ public class Modulzaro_feladatok {
 
     private static void programozoiTetelek() {
         feltolt();
+        kiir(oszlop);
     }
 
     private static void feltolt() {
@@ -24,9 +26,12 @@ public class Modulzaro_feladatok {
         return 0;
     }
 
+    private static void kiir(int oszlop) {
+        
+    }
+    
     private static void adatszerkezetTomb() {
         
     }
-
     
 }
